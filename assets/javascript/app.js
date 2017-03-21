@@ -55,16 +55,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     var currentTime = moment();
     console.log("current time: ", moment(currentTime).format("hh:mm"));
 
-    var difference = moment().diff(moment(timeConvert), "minutes");
+    var difference = currentTime.diff(moment(timeConvert), "minutes");
     console.log("difference: ", difference);
 
     var remainder = difference % frequency;
     console.log(remainder);
 
     var minutesAway = frequency - remainder;
-    console.log("trainArrival: ", minutesAway);
+    console.log("minutesAway: ", minutesAway);
 
-    var nextTrain = moment().add(minutesAway, "minutes");
+    var nextTrain = currentTime.add(minutesAway, "minutes");
     console.log("nextTrain: ", moment(nextTrain).format("hh:mm"));
 
     var nextArrival = moment(nextTrain).format("hh:mm");
