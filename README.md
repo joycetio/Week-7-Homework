@@ -23,6 +23,10 @@ Create a train schedule application that incorporates Firebase to host arrival a
 * Firebase 
 
 ## Code Explanation: 
+* Updates "Next Arrival" and "Minutes Away" every minute: 
+```
+ <meta http-equiv="refresh" content="60">
+```
 * First, I went to Firebase to get the configurations I needed to add Firebase to my web app. 
 ````
 var config = {
