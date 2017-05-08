@@ -35,6 +35,7 @@ $("#submitBtn").on("click", function(event) {
         frequency: frequency
     });
 
+    //Clears text box after user submits info
     $("#trainName").val("");
     $("#destinationInput").val("");
     $("#trainTime").val("");
@@ -50,22 +51,16 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
     var frequency = childSnapshot.val().frequency;
 
     var timeConvert = moment(trainTime, "hh:mm").subtract(1, "years");
-    // console.log(timeConvert);
 
     var currentTime = moment();
-    // console.log("current time: ", moment(currentTime).format("hh:mm"));
 
     var difference = currentTime.diff(moment(timeConvert), "minutes");
-    // console.log("difference: ", difference);
 
     var remainder = difference % frequency;
-    // console.log(remainder);
 
     var minutesAway = frequency - remainder;
-    // console.log("minutesAway: ", minutesAway);
 
     var nextTrain = currentTime.add(minutesAway, "minutes");
-    // console.log("nextTrain: ", moment(nextTrain).format("hh:mm"));
 
     var nextArrival = moment(nextTrain).format("hh:mm");
 
